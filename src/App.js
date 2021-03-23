@@ -1,19 +1,18 @@
 import './App.css';
-import SearchBar from './components/SearchBar'
+import LocationsContainer from './containers/LocationsContainer';
 import NavBar from './components/NavBar'
-import LocationsContainer from './components/LocationsContainer';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 
 function App() {
   return (
+    <Router>
     <div>
       <NavBar />
-      <header>
-        Hi World!
-      </header>
-      <SearchBar />
-      <LocationsContainer />
+      <Route exact path="/" component={Home} />
+      <Route exact path="/locations" component={LocationsContainer} />
     </div>
+    </Router>
   );
 }
 

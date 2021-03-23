@@ -1,4 +1,4 @@
-import Location from './Location'
+import Location from '../components/Location'
 import React from 'react'
 
 export default class LocationsContainer extends React.Component{

@@ -6,7 +6,7 @@ export default function NavBar(){
     <div>
       <a href="www.google.com">Favorite places</a> 
       <a href="www.google.com">Profile</a> 
-      <a href="www.google.com">Something else</a>
+      <a href="www.google.com">Home</a>
     </div>
   )
 }
