@@ -1,6 +1,7 @@
 import './App.css';
 import LocationsContainer from './containers/LocationsContainer';
 import NavBar from './components/NavBar'
+import Home from "./containers/Home";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 
