@@ -1,0 +1,8 @@
+.wrapper {
+  display: grid;
+  text-align: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 6px;
+  grid-row-gap:6px;
+  grid-auto-rows: minmax(100px, auto);
+}
