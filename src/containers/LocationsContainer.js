@@ -23,10 +23,9 @@ export default class LocationsContainer extends React.Component{
     return(
       <Switch>
         <Route exact path="/locations" component={() => <AllLocations locations={this.state.locations}/> } />
-        <Route exact path="/locations/:id" component={ (routeInfo) => {
-          console.log(routeInfo)
-          return <ShowLocation routeStuff={routeInfo}/> 
-        }}/>
+        <Route exact path="/locations/:id" component={ (routeInfo) =>{
+          const location = this.state.locations.find(location => location.id === parseInt(routeInfo.match.params.id) )
+          return !!location ? <ShowLocation routeStuff={routeInfo}/> : <h1>Sorry that location does not exist</h1> } }/>
       </Switch>
     )
   } 
