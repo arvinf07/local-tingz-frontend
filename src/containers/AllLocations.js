@@ -10,11 +10,10 @@ export default class AllLocations extends React.Component{
  
 
   renderCards = () => {
-    
     return this.props.locations.map(location => {
       return(
-        <Link to={location.id}>
-          <LocationCard {...location} />
+        <Link to={`/locations/${location.id}`}>
+          <LocationCard key={location.id}  {...location} />
         </Link>
       )
      

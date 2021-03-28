@@ -16,11 +16,13 @@ export default class LocationCard extends React.Component{
       // </div>
       <div className='location-card' >
         <Card border="primary" style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={this.props.image} width="286" height="180" />
+        <Card.Img variant="top" src={this.props.image_url} width="286" height="180" />
         <Card.Body>
         <Card.Title>{this.props.name}</Card.Title>
           <Card.Text>
-            Here I can put all of the other info 
+            Rating: {this.props.rating}/5 <br/>
+            Categories: {this.props.categories} <br/> 
+            Address: {this.props.address} <br/>
           </Card.Text>
           <Button variant="primary">More info</Button>
         </Card.Body>
