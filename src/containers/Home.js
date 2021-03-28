@@ -13,7 +13,6 @@ export default class Home extends React.Component{
   render(){
     return(
       <div>
-        <SearchBar />
         <LocationsContainer locations={this.props.locations} />
         {/* Is it worth it to make two more components OR just pass in new props */}
         {/* {this.state.loggedIn ? <MyLocationsContainer /> : <RandomLocations />} */}

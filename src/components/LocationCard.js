@@ -22,7 +22,7 @@ export default class LocationCard extends React.Component{
           <Card.Text>
             Here I can put all of the other info 
           </Card.Text>
-          <Button variant="primary">Add to list</Button>
+          <Button variant="primary">More info</Button>
         </Card.Body>
       </Card>
       </div>

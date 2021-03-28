@@ -1,8 +1,8 @@
 import './App.css';
-import LocationsContainer from './containers/LocationsContainer';
 import NavBar from './components/NavBar'
 import Home from "./containers/Home";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import LocationsContainer from './containers/LocationsContainer';
 
 
 export default function App() {
@@ -11,7 +11,7 @@ export default function App() {
       <NavBar />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/locations" component={LocationsContainer} />
+        <Route path="/locations" component={LocationsContainer} />
       </Switch>
     </ Router>
   )
