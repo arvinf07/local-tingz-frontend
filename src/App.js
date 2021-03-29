@@ -1,3 +1,4 @@
+import React from 'react'
 import './App.css';
 import NavBar from './components/NavBar'
 import Home from "./containers/Home";
@@ -5,14 +6,32 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LocationsContainer from './containers/LocationsContainer';
 
 
-export default function App() {
-  return (
-    <Router>
+export default class App extends React.Component{
+
+  state = {
+    locations: [], 
+    currentLocation: {}
+    
+  }
+  
+  componentDidMount(){
+    fetch('http://127.0.0.1:3000/locations')
+    .then(resp => resp.json())
+    .then(json => this.setState({
+      locations: json
+    }))
+  }
+
+  render(){
+    return(
+      <Router>
       <NavBar />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/locations" component={LocationsContainer} />
+        <Route path="/locations" component={ () => this.state.locations.length > 0 ? <LocationsContainer locations={this.state.locations} /> : <h1>Loadingggggg</h1>} />
       </Switch>
     </ Router>
-  )
+    )
+  }
+  
 }
