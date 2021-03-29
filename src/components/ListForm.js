@@ -2,19 +2,17 @@ import React from 'react'
 
 export default class ListForm extends React.Component{
 
-  handleChange = (e) => {
-    this.setState({
-      formName: e.target.value
-    })
-  }
-
   render(){
     return(
-      <form>
-        <label>Name your list:</label>
-        <input onChange={this.handleChange} type='text' value={this.state.formName} placeholder="Places for friends" />
-        <input type="submit" value='Create List' />
-      </form>
+      <div className="list-form">
+         <form>
+          <button onClick={this.props.handleClick}>X</button>
+          <label>Name your list:</label>
+          <input onChange={ e => this.props.handleChange(e)} type='text' value={this.props.listName} placeholder="Places for friends" />
+          <input type="submit" value='Create List' />
+        </form>
+      </div>
+     
     ) 
   }
 

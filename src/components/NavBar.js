@@ -20,14 +20,22 @@ export default function NavBar(){
           background: 'darkblue'
         }}
       >Home</NavLink>
-       <NavLink
-          to="/locations"
-          exact
-          style={link}
-          activeStyle={{
-            background: 'darkblue'
-          }}
-        >Locations</NavLink>
+      <NavLink
+        to="/locations"
+        exact
+        style={link}
+        activeStyle={{
+          background: 'darkblue'
+        }}
+      >Locations</NavLink>
+      <NavLink
+        to="/lists"
+        exact
+        style={link}
+        activeStyle={{
+          background: 'darkblue'
+        }}
+      >Lists</NavLink>
     </div>
   )
 }
