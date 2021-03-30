@@ -14,7 +14,7 @@ export default class LocationCard extends React.Component{
       //   Phone: {this.props.number}
       //   Address: {this.props.address}
       // </div>
-      <div className='location-card' >
+      <div>
         <Card border="primary" style={{ width: '18rem' }}>
         <Card.Img variant="top" src={this.props.image_url} width="286" height="180" />
         <Card.Body>

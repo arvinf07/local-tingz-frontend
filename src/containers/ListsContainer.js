@@ -26,7 +26,8 @@ export default class ListsContainer extends Component{
     })
   }
 
-  handleSubmit = () => {
+  handleSubmit = (e) => {
+    e.preventDefault()
     const body = {name: this.state.listName}
     const configObject = {
       method: "POST",
@@ -39,8 +40,11 @@ export default class ListsContainer extends Component{
     
     fetch(`http://127.0.0.1:3000/lists`, configObject)
     .then(resp => resp.json())
-    .then(json => console.log(json))
-    .catch( error => alert(error))
+    .then(json => {
+      this.setState((prevState) => {
+        return {lists: [...prevState.lists, json]}
+      })
+    })
   
   }
 

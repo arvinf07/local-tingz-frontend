@@ -2,7 +2,7 @@ import React from 'react'
 import SearchBar from '../components/SearchBar'
 import LocationsContainer from './LocationsContainer'
 
-// POST TO CREATE NEW LIST, EDIT LIST, DELETE LIST
+// EDIT LIST, DELETE LIST
 
 export default class Home extends React.Component{
 
