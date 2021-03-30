@@ -5,11 +5,6 @@ import LocationsContainer from './LocationsContainer'
 
 export default class Home extends React.Component{
 
-  // Should this be in App?
-  state = {
-    loggedIn: false
-  }
-
   render(){
     return(
       <div>

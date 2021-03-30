@@ -3,9 +3,6 @@ import { CardColumns } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import LocationCard from '../components/LocationCard'
 
-
-
-
 export default class AllLocations extends React.Component{
  
 
