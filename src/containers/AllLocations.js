@@ -5,7 +5,6 @@ import LocationCard from '../components/LocationCard'
 
 export default class AllLocations extends React.Component{
  
-
   renderCards = () => {
     return this.props.locations.map(location => {
       return(
@@ -14,9 +13,7 @@ export default class AllLocations extends React.Component{
             <LocationCard   {...location} />
           </Link>
         </div>
-        
       )
-     
     })
   }
 

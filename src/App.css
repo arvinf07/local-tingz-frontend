@@ -1,5 +1,11 @@
 .wrapper {
-  margin-top: 4px;
+  margin-top: 50px;
+}
+
+.add-btn {
+  width: 50px;
+  margin: auto 1px;
+  float: right;
 }
 
 /* .location-card{
