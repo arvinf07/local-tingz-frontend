@@ -6,3 +6,28 @@
   grid-row-gap:6px;
   grid-auto-rows: minmax(100px, auto);
 }
+
+.list{
+  border: 2px solid #4CAF50;
+}
+
+.form-btn, .list-form  {
+  size: 500px;
+  right: 500px;
+  transition-duration: 0.4s;
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+  
+.form-btn:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}

@@ -1,11 +1,13 @@
 import { Component } from "react";
 import ListForm from "../components/ListForm";
+import List from "../components/List";
 
 export default class ListsContainer extends Component{ 
   
   state = {
     showForm: false,
-    listName: ""
+    listName: "",
+    lists: []
   }
 
   handleClick = () => {
@@ -43,20 +45,34 @@ export default class ListsContainer extends Component{
   }
 
   componentDidMount(){
-    
+    fetch('http://127.0.0.1:3000/lists')
+    .then(resp => resp.json())
+    .then(json => this.setState({
+      lists: json
+    }))
   }
 
   renderForm = () => {
     if (this.state.showForm){
       return <ListForm listName={this.state.listName} handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleClick={this.handleClick} />
     } else{
-      return <button onClick={this.handleClick}>Make new list</button>
+      return <button className="form-btn" onClick={this.handleClick}>Make new list</button>
     }
+  }
+
+  renderLists = () => {
+    return this.state.lists.map(list => {
+      return(
+        <List {...list} />
+      )
+     
+    })
   }
 
   render(){
     return(
       <div className="lists-container">
+        {this.renderLists()}
         {this.renderForm()}
       </div>
     )
