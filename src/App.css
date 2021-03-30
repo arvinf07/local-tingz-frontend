@@ -6,8 +6,13 @@
   width: 50px;
   margin: auto 1px;
   float: right;
+  transition-duration: 0.4s;
 }
 
+.add-btn:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
 /* .location-card{
   
 } */
@@ -33,15 +38,11 @@
   color: white;
 }
 
-/* .lists-container {
-  padding: 1rem;
-  width: stretch;
-  height: auto;
-  background: #515DA2;
-  opacity: .8;
+.lists-container {
+  margin-top: 100px;
 }
 
-.list{
+/* .list{
   border: 2px solid #4CAF50;
   text-align: center;
   padding: 1rem;
@@ -50,4 +51,4 @@
   display: inline-grid;
   margin: 1rem 2rem;
   box-shadow: 3px 4px #e04b52
-} */
+}  */

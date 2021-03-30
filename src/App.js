@@ -15,11 +15,17 @@ export default class App extends React.Component{
     lists: []
   }
   
+
   componentDidMount(){
     fetch('http://127.0.0.1:3000/locations')
     .then(resp => resp.json())
     .then(json => this.setState({
       locations: json
+    }))
+    fetch('http://127.0.0.1:3000/lists')
+    .then(resp => resp.json())
+    .then(json => this.setState({
+      lists: json
     }))
   }
 
@@ -29,8 +35,8 @@ export default class App extends React.Component{
       <NavBar />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/locations" component={ () => this.state.locations.length > 0 ? <LocationsContainer locations={this.state.locations} /> : <h1>Loadingggggg</h1>} />
-        <Route path="/lists" component={ListsContainer} />
+        <Route path="/locations" component={ () => this.state.locations.length > 0 ? <LocationsContainer lists={this.state.lists} locations={this.state.locations} /> : <h1>Loadingggggg</h1>} />
+        <Route path="/lists" component={() => <ListsContainer lists={this.state.lists} />} />
       </Switch>
     </ Router>
     )

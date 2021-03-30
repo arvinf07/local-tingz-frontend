@@ -48,13 +48,13 @@ export default class ListsContainer extends Component{
   
   }
 
-  componentDidMount(){
-    fetch('http://127.0.0.1:3000/lists')
-    .then(resp => resp.json())
-    .then(json => this.setState({
-      lists: json
-    }))
-  }
+  // componentDidMount(){
+  //   fetch('http://127.0.0.1:3000/lists')
+  //   .then(resp => resp.json())
+  //   .then(json => this.setState({
+  //     lists: json
+  //   }))
+  // }
 
   renderForm = () => {
     if (this.state.showForm){
@@ -65,9 +65,9 @@ export default class ListsContainer extends Component{
   }
 
   renderLists = () => {
-    return this.state.lists.map(list => {
+    return this.props.lists.map(list => {
       return(
-        <List {...list} />
+        <List className="col pb-3" {...list} />
       )
      
     })
@@ -75,7 +75,7 @@ export default class ListsContainer extends Component{
 
   render(){
     return(
-      <div className="lists-container">
+      <div className="lists-container wrapper row row-cols-1 row-cols-md-4 g-4">
         {this.renderLists()}
         {this.renderForm()}
       </div>

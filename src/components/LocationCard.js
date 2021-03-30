@@ -1,6 +1,7 @@
 import React from 'react'
-
-import { Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Card } from 'react-bootstrap';
+import AddButton from './AddButton';
 
 
 export default class LocationCard extends React.Component{
@@ -17,8 +18,8 @@ export default class LocationCard extends React.Component{
             Categories: {this.props.categories} <br/> 
             Address: {this.props.address} <br/>
           </Card.Text>
-          <Button variant="primary">More info</Button>
-          <img className="add-btn" src="https://cdn.iconscout.com/icon/free/png-512/add-new-1439785-1214356.png"/>
+          <Link className='btn btn-primary' to={`/locations/${this.props.id}`}>More info</Link>
+          <AddButton lists={this.props.lists}/>
         </Card.Body>
       </Card>
       </div>
