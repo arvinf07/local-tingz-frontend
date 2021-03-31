@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function List({id, name, locations}){
-  
+export default function List({id, name, locations = []}){
   return(
      <ul className='list' id={id}>
         <h3>{name}</h3>
