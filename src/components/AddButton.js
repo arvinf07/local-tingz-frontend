@@ -9,7 +9,7 @@ export default function AddButton(props){
 
       <Dropdown.Menu>
         {props.lists.map(list => {
-          return <Dropdown.Item onClick={props.addToList}>{list.name}</Dropdown.Item>
+          return <Dropdown.Item onClick={(e) => props.addToList(e, list, props.locationID)}>{list.name}</Dropdown.Item>
         })}
       </Dropdown.Menu>
     </Dropdown>

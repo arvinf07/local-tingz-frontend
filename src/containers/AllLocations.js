@@ -7,7 +7,7 @@ export default class AllLocations extends React.Component{
     return this.props.locations.map(location => {
       return(
         <div className='col pb-3'>
-          <LocationCard lists={this.props.lists} {...location} />
+          <LocationCard addToList={this.props.addToList} lists={this.props.lists} {...location} />
         </div>
       )
     })

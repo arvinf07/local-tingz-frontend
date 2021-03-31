@@ -6,6 +6,7 @@ import AddButton from './AddButton';
 
 export default class LocationCard extends React.Component{
 
+ 
   render(){
     return(
       <div>
@@ -19,7 +20,7 @@ export default class LocationCard extends React.Component{
             Address: {this.props.address} <br/>
           </Card.Text>
           <Link className='btn btn-primary' to={`/locations/${this.props.id}`}>More info</Link>
-          <AddButton lists={this.props.lists}/>
+          <AddButton locationID={this.props.id} addToList={this.props.addToList} lists={this.props.lists}/>
         </Card.Body>
       </Card>
       </div>

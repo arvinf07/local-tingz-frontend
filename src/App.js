@@ -15,6 +15,26 @@ export default class App extends React.Component{
     lists: []
   }
   
+  addToList = (e, list, locationID) => {
+    const body = {location_id: locationID}
+    const configObject = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(body)
+    }; 
+    
+    fetch(`http://127.0.0.1:3000/lists/${list.id}`, configObject)
+    .then(resp => resp.json())
+    .then(json => this.setState({
+      lists: json
+    }))
+
+    
+    
+  }
 
   componentDidMount(){
     fetch('http://127.0.0.1:3000/locations')
@@ -35,7 +55,7 @@ export default class App extends React.Component{
       <NavBar />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/locations" component={ () => this.state.locations.length > 0 ? <LocationsContainer lists={this.state.lists} locations={this.state.locations} /> : <h1>Loadingggggg</h1>} />
+        <Route path="/locations" component={ () => this.state.locations.length > 0 ? <LocationsContainer addToList={this.addToList} lists={this.state.lists} locations={this.state.locations} /> : <h1>Loadingggggg</h1>} />
         <Route path="/lists" component={() => <ListsContainer lists={this.state.lists} />} />
       </Switch>
     </ Router>
