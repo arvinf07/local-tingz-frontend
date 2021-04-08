@@ -1,7 +1,8 @@
 import React from 'react'
 import LocationCard from '../components/LocationCard'
+import { connect } from "react-redux";
 
-export default class AllLocations extends React.Component{
+class AllLocations extends React.Component{
  
   renderCards = () => {
     return this.props.locations.map(location => {
@@ -24,3 +25,10 @@ export default class AllLocations extends React.Component{
   }
 
 }
+
+const mapStateToProps = (state) => {
+  return state
+}
+
+
+export default connect(mapStateToProps)(AllLocations)
