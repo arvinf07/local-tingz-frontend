@@ -75,7 +75,9 @@ export default class App extends React.Component{
       <NavBar />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/locations" component={ () => this.state.locations.length > 0 ? <LocationsContainer addToList={this.addToList} lists={this.state.lists} locations={this.state.locations} /> : <h1>Loadingggggg</h1>} />
+        <Route path="/locations" component={ () => this.state.locations.length > 0 
+          ? <LocationsContainer addToList={this.addToList} lists={this.state.lists} locations={this.state.locations} /> 
+          : <img id="loading-img" src='https://miro.medium.com/max/1080/0*DqHGYPBA-ANwsma2.gif'/>} />
         <Route path="/lists" component={() => <ListsContainer handleSubmit={this.handleSubmit} lists={this.state.lists} />} />
       </Switch>
     </ Router>

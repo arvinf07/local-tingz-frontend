@@ -1,41 +1,15 @@
-import { NavLink } from 'react-router-dom';
+import Navbar from 'react-bootstrap/Navbar'
+import {Nav} from 'react-bootstrap'
 
-const link = {
-  width: '100px',
-  padding: '12px',
-  margin: '0 6px 6px',
-  background: 'blue',
-  textDecoration: 'none',
-  color: 'white',
-}
-
-export default function NavBar(){
+export default function NavigationBar(){
   return(
-    <div>
-      <NavLink
-        to="/"
-        exact
-        style={link}
-        activeStyle={{
-          background: 'darkblue'
-        }}
-      >Home</NavLink>
-      <NavLink
-        to="/locations"
-        exact
-        style={link}
-        activeStyle={{
-          background: 'darkblue'
-        }}
-      >Locations</NavLink>
-      <NavLink
-        to="/lists"
-        exact
-        style={link}
-        activeStyle={{
-          background: 'darkblue'
-        }}
-      >Lists</NavLink>
-    </div>
+    <Navbar bg="dark" variant="dark">
+      <Navbar.Brand href="/">Local Tingz</Navbar.Brand>
+      <Nav className="mr-auto">
+        <Nav.Link href="/locations">Locations</Nav.Link>
+        <Nav.Link href="/lists">Lists</Nav.Link>
+      </Nav>
+    </Navbar>
   )
 }
+

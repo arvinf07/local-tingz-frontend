@@ -8,7 +8,7 @@ export default class ListForm extends React.Component{
          <form onSubmit={e => this.props.handleSubmit(e, this.props.listName)}>
           <button onClick={this.props.handleClick}>X</button>
           <label>Name your list:</label>
-          <input onChange={ e => this.props.handleChange(e)} type='text' value={this.props.listName} placeholder="Places for friends" />
+          <input onChange={ e => this.props.handleChange(e)} type='text' required={true} value={this.props.listName} placeholder="Places for friends" />
           <input type="submit" value='Create List' />
         </form>
       </div>

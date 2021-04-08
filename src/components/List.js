@@ -1,17 +1,22 @@
 import { Link } from 'react-router-dom';
+import { Card, ListGroup, Image } from "react-bootstrap";
 
 export default function List({id, name, locations = []}){
   return(
-     <ul className='list' id={id}>
-        <h3>{name}</h3>
+    <Card className='col pb-3' style={{ width: '18rem' }}>
+      <Card.Header>
+        {name}
+      </Card.Header>
+      <ListGroup className='list' id={id} variant="flush">
         {locations.map(location => {
           return(
-            <li>
+            <ListGroup.Item>
               <Link to={`/locations/${location.id}`}> {location.name} </Link>
-            </li>
+            </ListGroup.Item>
           ) 
         })}
-     </ul>
+      </ListGroup>
+     </Card>
     )
-
 }
+
