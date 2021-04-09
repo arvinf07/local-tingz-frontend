@@ -6,9 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import listReducer from "./reducers/listsReducer";
+import rootReducer from "./reducers/listsReducer";
 
-const store = createStore(listReducer,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = createStore(rootReducer,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 ReactDOM.render(
   <Provider store={store}>

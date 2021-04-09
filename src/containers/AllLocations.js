@@ -3,7 +3,7 @@ import LocationCard from '../components/LocationCard'
 import { connect } from "react-redux";
 
 class AllLocations extends React.Component{
- 
+  //find why reducer is not setting state to [] 
   renderCards = () => {
     return this.props.locations.map(location => {
       return(
@@ -27,7 +27,8 @@ class AllLocations extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-  return state
+  //because if undefined error in line 8
+  return {lists: [], locations: []}
 }
 
 
