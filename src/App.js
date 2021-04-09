@@ -85,7 +85,6 @@ class App extends React.Component{
   // }
 
   render(){
-    debugger
     return(
       <Router>
       <NavBar />
@@ -103,7 +102,7 @@ class App extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-  debugger
+  console.log(state)
   return state
 }
 

@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import { listsReducer } from "./listsReducer";
-import { locationsReducer } from "./locationsReducer";
+import listsReducer from "./listsReducer";
+import locationsReducer from "./locationsReducer";
 
 
 const rootReducer = combineReducers({
