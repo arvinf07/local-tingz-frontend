@@ -1,4 +1,3 @@
-/// DO I NEED TO MAKE A SEPARATE REDUCER JUST 
 
 export default function listsReducer(state = [], action){
   switch(action.type){
@@ -8,8 +7,8 @@ export default function listsReducer(state = [], action){
       ///pass in location object
       ///spread it into the list array
     case 'CREATE_LIST':
-      ///pass in a name in the actionObj
-      ///add a new listObj to state.lists
+      return [...state, action.listName]
+      
     default:
       return state
   }

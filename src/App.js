@@ -6,7 +6,7 @@ import ListsContainer from "./containers/ListsContainer";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LocationsContainer from './containers/LocationsContainer';
 import { connect } from "react-redux";
-import { fetchLocations, fetchLists } from "./actions/actionCreators";
+import { fetchLocations, fetchLists, postList } from "./actions/actionCreators";
 
 
 class App extends React.Component{
@@ -32,23 +32,7 @@ class App extends React.Component{
 
   handleSubmit = (e, listName) => {
     e.preventDefault()
-    const body = {name: listName}
-    const configObject = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(body)
-    }; 
-    
-    fetch(`http://127.0.0.1:3000/lists`, configObject)
-    .then(resp => resp.json())
-    .then(json => {
-      this.setState((prevState) => {
-        return {lists: [...prevState.lists, json]}
-      })
-    })
+    this.props.postList(listName)
   
   }
 
@@ -79,5 +63,6 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect( mapStateToProps, {fetchLocations, fetchLists})(App)
+export default connect( mapStateToProps, {fetchLocations, fetchLists, postList })(App)
 
+///////// CONNECT allLocations and listsContainers to map dispatch addlist and postList??
