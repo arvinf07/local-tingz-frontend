@@ -6,16 +6,10 @@ import ListsContainer from "./containers/ListsContainer";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LocationsContainer from './containers/LocationsContainer';
 import { connect } from "react-redux";
-import { addLocations, addLists } from "./actions/actionCreators";
+import { fetchLocations, fetchLists } from "./actions/actionCreators";
 
 
 class App extends React.Component{
-
-  // state = {
-  //   locations: [], 
-  //   currentLocation: {}, 
-  //   lists: []
-  // }
   
   addToList = (e, list, locationID) => {
     const body = {location_id: locationID}
@@ -59,30 +53,9 @@ class App extends React.Component{
   }
 
   componentDidMount(){
-    //repetitive. How to refactor?
-    //maybe make fetch() into function and pass in resource as args
-    fetch('http://127.0.0.1:3000/locations')
-    .then(resp => resp.json())
-    .then(json => this.props.addLocations(json))
-
-    fetch('http://127.0.0.1:3000/lists')
-    .then(resp => resp.json())
-    .then(json => this.props.addLists(json))
+    this.props.fetchLocations()
+    this.props.fetchLists()
   }
-
-  // componentDidMount(){
-  //   //repetitive. How to refactor?
-  //   fetch('http://127.0.0.1:3000/locations')
-  //   .then(resp => resp.json())
-  //   .then(json => this.setState({
-  //     locations: json
-  //   }))
-  //   fetch('http://127.0.0.1:3000/lists')
-  //   .then(resp => resp.json())
-  //   .then(json => this.setState({
-  //     lists: json
-  //   }))
-  // }
 
   render(){
     return(
@@ -90,8 +63,8 @@ class App extends React.Component{
       <NavBar />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/locations" component={ () => !this.props.locations
-          ? <LocationsContainer addToList={this.addToList} /> 
+        <Route path="/locations" component={ () => this.props.locations.length > 0 
+          ? <LocationsContainer addToList={this.addToList} locations={this.props.locations} /> 
           : <img id="loading-img" src='https://miro.medium.com/max/1080/0*DqHGYPBA-ANwsma2.gif'/>} />
         <Route path="/lists" component={() => <ListsContainer handleSubmit={this.handleSubmit} lists={this.props.lists} />} />
       </Switch>
@@ -106,5 +79,5 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect( mapStateToProps, {addLocations, addLists})(App)
+export default connect( mapStateToProps, {fetchLocations, fetchLists})(App)
 

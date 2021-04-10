@@ -26,10 +26,8 @@ class AllLocations extends React.Component{
 
 }
 
-const mapStateToProps = (state) => {
-  //because if undefined error in line 8
-  return {lists: [], locations: []}
-}
+const mapStateToProps = (state) => state
+
 
 
 export default connect(mapStateToProps)(AllLocations)
