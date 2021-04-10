@@ -6,7 +6,7 @@ import ListsContainer from "./containers/ListsContainer";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LocationsContainer from './containers/LocationsContainer';
 import { connect } from "react-redux";
-import { fetchLocations, fetchLists, postList, addToList } from "./actions/actionCreators";
+import { addToList } from "./actions/actionCreators"; 
 
 
 class App extends React.Component{
@@ -15,15 +15,7 @@ class App extends React.Component{
     this.props.addToList(list, locationID)
   }
 
-  handleSubmit = (e, listName) => {
-    e.preventDefault()
-    this.props.postList(listName)
-  }
-
-  componentDidMount(){
-    this.props.fetchLocations()
-    this.props.fetchLists()
-  }
+ 
 
   render(){
     return(
@@ -31,10 +23,8 @@ class App extends React.Component{
       <NavBar />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/locations" component={ () => this.props.locations.length > 0 
-          ? <LocationsContainer addToList={this.addToList} locations={this.props.locations} /> 
-          : <img id="loading-img" src='https://miro.medium.com/max/1080/0*DqHGYPBA-ANwsma2.gif'/>} />
-        <Route path="/lists" component={() => <ListsContainer handleSubmit={this.handleSubmit} lists={this.props.lists} />} />
+        <Route path="/locations" component={ () => <LocationsContainer addToList={this.addToList}/> }/>
+        <Route path="/lists" component={() => <ListsContainer/>} />
       </Switch>
     </ Router>
     )
@@ -42,11 +32,6 @@ class App extends React.Component{
   
 }
 
-const mapStateToProps = (state) => {
-  console.log(state)
-  return state
-}
+export default connect( null, { addToList })(App)
 
-export default connect( mapStateToProps, {fetchLocations, fetchLists, postList, addToList })(App)
-
-///////// CONNECT allLocations and listsContainers to map dispatch addlist and postList?? !!!!NEXT STEP THUNK OUT THE ADDTOLIST FETCH
+///////// CONNECT allLocations and listsContainers to map dispatch addlist and postList?? 

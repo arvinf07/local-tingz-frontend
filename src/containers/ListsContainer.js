@@ -1,12 +1,18 @@
 import { Component } from "react";
 import ListForm from "../components/ListForm";
 import List from "../components/List";
+import { connect } from "react-redux";
+import { fetchLists, postList } from "../actions/actionCreators";
 
-export default class ListsContainer extends Component{ 
+class ListsContainer extends Component{ 
   
   state = {
     showForm: false,
     listName: ""
+  }
+
+  componentDidMount(){
+    this.props.fetchLists()
   }
 
   handleClick = () => {
@@ -19,6 +25,15 @@ export default class ListsContainer extends Component{
     })
   }
 
+  handleSubmit = (e, listName) => {
+    e.preventDefault()
+    this.props.postList(listName)
+    this.setState({
+      listName: "",
+      showForm: false
+    })
+  }
+
   handleChange = (e) => {
     this.setState({
       listName: e.target.value
@@ -27,7 +42,7 @@ export default class ListsContainer extends Component{
 
   renderForm = () => {
     if (this.state.showForm){
-      return <ListForm listName={this.state.listName} handleSubmit={this.props.handleSubmit} handleChange={this.handleChange} handleClick={this.handleClick} />
+      return <ListForm listName={this.state.listName} handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleClick={this.handleClick} />
     } else{
       return <button className="form-btn" onClick={this.handleClick}>Make new list</button>
     }
@@ -38,7 +53,6 @@ export default class ListsContainer extends Component{
       return(
         <List className="col pb-3" {...list} />
       )
-     
     })
   }
 
@@ -52,3 +66,9 @@ export default class ListsContainer extends Component{
   }
   
 }
+
+const mapStateToProps = state => {
+  return {lists: state.lists}
+}
+
+export default connect( mapStateToProps, {fetchLists, postList})(ListsContainer)

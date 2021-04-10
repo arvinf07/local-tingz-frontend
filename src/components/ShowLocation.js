@@ -1,5 +1,6 @@
 
 // how to destructure here
+//add functionality to add card from here
 export default function ShowLocation(props){
   return(
     <div>
