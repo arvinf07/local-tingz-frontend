@@ -6,34 +6,18 @@ import ListsContainer from "./containers/ListsContainer";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LocationsContainer from './containers/LocationsContainer';
 import { connect } from "react-redux";
-import { fetchLocations, fetchLists, postList } from "./actions/actionCreators";
+import { fetchLocations, fetchLists, postList, addToList } from "./actions/actionCreators";
 
 
 class App extends React.Component{
   
   addToList = (e, list, locationID) => {
-    const body = {location_id: locationID}
-    const configObject = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(body)
-    }; 
-    
-    fetch(`http://127.0.0.1:3000/lists/${list.id}`, configObject)
-    .then(resp => resp.json())
-    .then(json => this.setState({
-      lists: json
-    }))
-    
+    this.props.addToList(list, locationID)
   }
 
   handleSubmit = (e, listName) => {
     e.preventDefault()
     this.props.postList(listName)
-  
   }
 
   componentDidMount(){
@@ -63,6 +47,6 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect( mapStateToProps, {fetchLocations, fetchLists, postList })(App)
+export default connect( mapStateToProps, {fetchLocations, fetchLists, postList, addToList })(App)
 
-///////// CONNECT allLocations and listsContainers to map dispatch addlist and postList??
+///////// CONNECT allLocations and listsContainers to map dispatch addlist and postList?? !!!!NEXT STEP THUNK OUT THE ADDTOLIST FETCH

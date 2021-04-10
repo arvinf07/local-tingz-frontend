@@ -37,6 +37,25 @@ export const fetchLists = () => {
   }
 }
 
+export const addToList = (list, locationID) => {
+  return (dispatch) => {
+    const body = {location_id: locationID}
+    const configObject = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(body)
+    }; 
+    
+    fetch(url + `/lists/${list.id}`, configObject)
+    .then(resp => resp.json())
+    .then(json => dispatch(addLists(json)))
+  }
+  
+}
+
 export const postList = (listName) => {
   return (dispatch) => {
     const body = {name: listName}
@@ -49,7 +68,7 @@ export const postList = (listName) => {
       body: JSON.stringify(body)
     }; 
 
-    fetch(`http://127.0.0.1:3000/lists`, configObject)
+    fetch(url + `lists`, configObject)
     .then(resp => resp.json())
     .then(json => dispatch(createList(json)))
     
