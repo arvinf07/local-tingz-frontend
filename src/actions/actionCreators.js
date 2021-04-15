@@ -37,6 +37,7 @@ export const fetchLists = () => {
   }
 }
 
+/// use the addToList action here.
 export const addToList = (list, locationID) => {
   return (dispatch) => {
     const body = {location_id: locationID}

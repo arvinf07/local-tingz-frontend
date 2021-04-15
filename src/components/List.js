@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Card, ListGroup, Image } from "react-bootstrap";
+import { Card, ListGroup } from "react-bootstrap";
 
 export default function List({id, name, locations = []}){
   return(
